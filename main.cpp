@@ -24,7 +24,7 @@ struct Entry {
 };
 
 size_t get_bucket(const string& index) {
-    return hash<string>{}(index) % 50;
+    return 0;
 }
 
 string get_bucket_filename(size_t b) {
