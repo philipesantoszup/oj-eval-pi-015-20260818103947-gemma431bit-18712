@@ -24,7 +24,7 @@ struct Entry {
 };
 
 size_t get_bucket(const string& index) {
-    return hash<string>{}(index) % 256;
+    return hash<string>{}(index) % 10;
 }
 
 string get_bucket_filename(size_t b) {
@@ -49,13 +49,13 @@ void save_bucket(size_t b, const set<Entry>& entries) {
     }
 }
 
-size_t current_bucket = 257;
+size_t current_bucket = 11;
 set<Entry> current_entries;
 bool bucket_modified = false;
 
 void switch_bucket(size_t b) {
     if (current_bucket == b) return;
-    if (current_bucket != 257 && bucket_modified) {
+    if (current_bucket != 11 && bucket_modified) {
         save_bucket(current_bucket, current_entries);
     }
     current_bucket = b;
